@@ -1,0 +1,21 @@
+# --- Python Specific ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# --- VS Code Specific ---
+.vscode/
+.history/
+
+# --- Secrets & Environment Variables ---
+.env
+auth_token.txt
+*.log
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
