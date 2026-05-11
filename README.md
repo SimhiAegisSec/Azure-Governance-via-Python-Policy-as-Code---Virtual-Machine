@@ -25,3 +25,18 @@ In a real-world enterprise environment, manual oversight is impossible. This pro
 
 ## ✅ Verification
 Verification is performed by attempting to create a non-compliant resource in the Azure Portal. The "Validation" step will fail with a `RequestDisallowedByPolicy` error, proving the Python-deployed guardrails are active.
+
+
+## 📸 Project Evidence
+
+### 1. Policies Created via Python
+This screenshot shows the custom policies successfully injected into the Azure environment by the script.
+![Policies Created](/screenshots/Policy_page.png)
+
+### 2. VM Size Enforcement (Deny)
+Evidence of the 'Cost Guardrail' blocking the creation of a non-compliant VM size.
+![VM Size Validation](/screenshots/other_size_blocked_by_policy.png)
+
+### 3. Tag Requirement Enforcement
+Evidence of the 'Organization Guardrail' blocking a resource that is missing the Environment tag.
+![Tag Validation](/screenshots/resource-creation-failed-no-tags.png)
