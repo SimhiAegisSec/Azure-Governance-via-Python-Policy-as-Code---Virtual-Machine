@@ -1,44 +1,27 @@
-# Azure-Governance-via-Python-Policy-as-Code---Virtual-Machine
-This project demonstrates how to programmatically manage Azure Governance using the Azure Python SDK. It automates the deployment of Azure Policies to enforce cost controls and organizational standards.
+# Azure Automated Governance: Policy-as-Code
 
-🚀 Features
-Cost Guardrails: Automatically denies the creation of Virtual Machines unless they use the Standard_B1s size.
+This project demonstrates how to use **Python** and the **Azure SDK** to automate cloud governance. By deploying custom Azure Policies, this script establishes "guardrails" to prevent high costs and ensure organizational compliance.
 
-Tag Enforcement: (In Progress) Ensures every resource is created with an Environment tag for better billing tracking.
+## 🛡️ Implemented Guardrails
+1.  **VM Size Restriction**: Automatically denies the creation of any Virtual Machine unless the size is `Standard_B1s`.
+2.  **Tag Enforcement**: Denies the creation of any resource that does not include the `Environment` tag (used for cost tracking).
 
-Automated Authentication: Uses DeviceCodeCredential to handle secure logins across multiple tenants (Work vs. Personal).
+## 🛠️ Technology Stack
+*   **Language**: Python 3.x
+*   **SDK**: `azure-mgmt-resource`, `azure-identity`
+*   **Authentication**: `InteractiveBrowserCredential` with Multi-Tenant support.
 
-🛠️ Tech Stack
+## 🚀 How to Use
+1.  **Clone the Repo**: Download the `deploy_governance.py` file.
+2.  **Install Dependencies**:
+    ```bash
+    pip install -r requirements.txt
 
-Language: Python 3.x
+## 🔍 Why this matters
+In a real-world enterprise environment, manual oversight is impossible. This project solves that by:
+*   **Preventing Cost Overruns**: No one can accidentally spin up a $500/month VM.
+*   **Standardizing Data**: Every resource is forced to have an 'Environment' tag, making billing reports accurate.
+*   **Automation**: Policies are deployed in seconds across a subscription without clicking through the Portal.
 
-Cloud: Microsoft Azure
-
-Libraries:
-
-azure-identity: For secure authentication.
-
-azure-mgmt-resource: For interacting with Azure Policy services.
-
-📋 Prerequisites
-An active Azure Subscription.
-
-Python installed on your local machine.
-
-Libraries installed via pip:
-
-Bash
-pip install azure-identity azure-mgmt-resource-policy
-⚙️ Setup & Usage
-Clone this repository.
-
-Update the SUBSCRIPTION_ID and TENANT_ID variables in the scripts.
-
-Run the deployment script:
-
-Bash
-   python deploy_policy.py
-Follow the terminal instructions to authenticate via the browser.
-
-🛡️ Verification
-The policy can be verified in the Azure Portal under the Policy > Assignments tab. Any attempt to create a VM larger than a B1s will be blocked at the validation stage by the Azure Resource Manager.
+## ✅ Verification
+Verification is performed by attempting to create a non-compliant resource in the Azure Portal. The "Validation" step will fail with a `RequestDisallowedByPolicy` error, proving the Python-deployed guardrails are active.
